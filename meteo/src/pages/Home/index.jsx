@@ -8,24 +8,19 @@ import axios from 'axios';
 
 const Home = () => {
 
-  function getLocalisation() {
+  const [cityweather, setCityweather] = useState({});
+  
+  const getDataFromApi = async (lat, long) => {
+    console.log(lat, long);
     
-    const options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0
-    };
-    
-    function success(pos) {
-      const crd = pos.coords;
-      
-      const url = `https://api.weatherapi.com/v1/current.json?key=56e420e8280d4f05a3593154212107&q=${crd.latitude},${crd.longitude}&aqi=no`;
-
-      axios.get(url)
+    const url = `https://api.weatherapi.com/v1/current.json?key=56e420e8280d4f05a3593154212107&q=${lat},${long}&aqi=no`;
+    axios.get(url)
       .then(function (response) {
         // handle success
+        setCityweather(response.data);
         console.log(response);
-        return response
+        console.log(cityweather);
+        
       })
       .catch(function (error) {
         // handle error
@@ -33,38 +28,35 @@ const Home = () => {
         return error
       });
     }
-    
-    function error(err) {
-      console.warn(`ERROR(${err.code}): ${err.message}`);
+
+    function geolocation () {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        let lat = position.coords.latitude;
+        let long = position.coords.longitude;
+      
+        return getDataFromApi(lat, long);
+      });
     }
     
-    navigator.geolocation.getCurrentPosition(success, error, options);
+    useEffect(() => {
+      getDataFromApi(setCityweather);
+    }, [setCityweather]);
     
-    
-    return 
-  }
+  return (
 
-  const position = getLocalisation();
+    <React.Fragment>
+    console.log(cityweather)
+      <div className= "Actual_weather_container">
+          <Search />
+          <Geolocalisation />
+          <Weather />
+      </div>
+      <div className= "Future_weather_container">
+      </div>
+  </React.Fragment> 
+  )  
 
-    
-  
-    
-   
-    return (
-        <React.Fragment>
-            <div className= "Actual_weather_container">
-                <Search />
-                <Geolocalisation />
-                <Weather />
-            </div>
-
-            <div className= "Future_weather_container">
-
-            </div>
-        </React.Fragment>
-)}
-       
- 
+}
 
   
 
