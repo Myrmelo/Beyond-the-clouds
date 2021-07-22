@@ -8,7 +8,8 @@ import axios from 'axios';
 
 
 const Home = () => {
-
+  
+  const [homePage, setHomePage] = useState("noSearch");
   const [cityWeather, setCityWeather] = useState({});
   const [cityLocation, setCityLocation] = useState({});
   const [weatherForecast, setweatherForecast] = useState([]);
@@ -54,13 +55,35 @@ const Home = () => {
 
    forecast.map(card => console.log(card));
 
+   const tabCity = [
+     "Paris", "Dieppe", "Lille", "Nancy", "Brest"
+   ]
+
+   let resultTab = [];
+
+  function getSearch(value){
+    console.log(value);
+    const result = tabCity.filter(search => search === value);
+    console.log(result);
+    if (result.length > 0){
+      for (const tabValue of result){
+        resultTab.push(tabValue);
+      }
+      console.log("dans le if !!!!!!!");
+    }
+  }
+
+  console.log(resultTab);
+
   return (
 
+    ((homePage === "noSearch") ? 
+    
     <React.Fragment>
       <div className= "Actual_weather_container">
         <div className= "Header">
           <Search> 
-            <button id="btn-search" >Rechercher une ville</button>
+            <button id="btn-search" onClick={() => setHomePage("search")} >Rechercher une ville</button>
           </Search>
           <Geolocalisation>
             <button id="btn-geolocalisation" onClick={geolocation} ></button>
@@ -85,6 +108,23 @@ const Home = () => {
 
       </div>
   </React.Fragment> 
+  
+  :
+  
+  <div className= "Search_container">
+    <input type="search" name="search" id="search-bar" onChange={(event) => getSearch(event.target.value)} />
+    <button >Search</button>
+
+    <p>
+      {resultTab}
+    </p>
+  </div>
+  
+
+
+
+  
+  )
   )  
 
 }
