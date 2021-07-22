@@ -1,12 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import './style.css'
-import GPS from '../../images/GPS.png'
 
-function Geolocalisation() {
+
+function Geolocalisation({children}) {
     return (
-        <button id="btn-geolocalisation"></button>
-      
+        <React.Fragment>
+            {children}
+        </ React.Fragment>
     )
   }
   
