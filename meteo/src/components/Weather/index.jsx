@@ -30,7 +30,7 @@ function Weather({country, city, region, localTime, temperature, condition}) {
             <p id="time" >{hours}</p>
             <p id="date" >{date}</p>
             <p>{tabCondition[0]}</p>
-            <p>{`${temperature}C°`}</p>
+            <p>{`${temperature} °C`}</p>
             <div id={idCondition}>
             <img src={tabCondition[1]} alt={tabCondition[0]}/>
             </div>

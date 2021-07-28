@@ -80,9 +80,9 @@ const Home = () => {
    ]
 
   function getSearch(value){
-    const result = tabCity.filter((search) => {
-      if (search.slice(0, value.length) === value){
-        return search;
+    const result = tabCity.filter((city) => {
+      if (city.slice(0, value.length) === value){
+        return city;
       }
     });
     setCities(result);
