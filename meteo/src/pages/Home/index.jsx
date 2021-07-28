@@ -13,10 +13,12 @@ const Home = () => {
   const [cityWeather, setCityWeather] = useState({});
   const [cityLocation, setCityLocation] = useState({});
   const [weatherForecast, setweatherForecast] = useState([]);
+  const [cities, setCities] = useState([]);
+
+  const windowUrl = window.location.pathname.slice(1, );
+
   
   const getDataFromApi = (lat, long) => {
-    console.log(lat, long);
-    
     const url = `https://api.weatherapi.com/v1/forecast.json?key=56e420e8280d4f05a3593154212107&q=${lat},${long}&days=3&lang=fr&aqi=no`;
     axios.get(url)
       .then(function (response) {
@@ -41,39 +43,50 @@ const Home = () => {
         return getDataFromApi(lat, long);
       });
     }
+
+    const getSearchApi = (city) => {
+      const url = `https://api.weatherapi.com/v1/forecast.json?key=56e420e8280d4f05a3593154212107&q=${city}&days=3&lang=fr&aqi=no`;
+      axios.get(url)
+        .then(function (response) {
+          // handle success
+          setCityWeather(response.data.current);
+          console.log(response);
+          setCityLocation(response.data.location);
+          setweatherForecast(response.data.forecast.forecastday);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+          return error
+        });
+    }
     
     useEffect(() => {
-      geolocation();
+      if (windowUrl){
+        getSearchApi(windowUrl);
+      } else {
+        geolocation();
+      }
     }, []);
 
-   console.log(cityWeather);
-   console.log(cityLocation);
-   console.log(weatherForecast);
-
    const forecast = weatherForecast.slice(1);
-   console.log(forecast);
-
-   forecast.map(card => console.log(card));
 
    const tabCity = [
-     "Paris", "Dieppe", "Lille", "Nancy", "Brest"
+     "Paris", "Dieppe", "Lille", "Nancy", "Brest", "Dagny-Lambercy", "Dagonville", "Dahlenheim", 
+     "Daignac", "Daigny", "Daillancourt", "Daillecourt", "Dainville", "Dainville-Bertheléville", 
+     "Daix", "Dalem", "Dalhain", "Dalhunden", "Dallon", "Dalou", "Dalstein", "Daluis", "Damas-aux-Bois", 
+     "Damas-et-Bettegney", "Damazan", "Dambach", "Dambach-la-Ville", "Dambelin", "Dambenois", "Dambenoît-lès-Colombe", 
+     "Damblain", "Damblainville", "Dambron", "Dame-Marie", "Dame-Marie-les-Bois", "Damelevières", "Daméraucourt", "Damerey", "Damery"
    ]
 
-   let resultTab = [];
-
   function getSearch(value){
-    console.log(value);
-    const result = tabCity.filter(search => search === value);
-    console.log(result);
-    if (result.length > 0){
-      for (const tabValue of result){
-        resultTab.push(tabValue);
+    const result = tabCity.filter((search) => {
+      if (search.slice(0, value.length) === value){
+        return search;
       }
-      console.log("dans le if !!!!!!!");
-    }
+    });
+    setCities(result);
   }
-
-  console.log(resultTab);
 
   return (
 
@@ -115,14 +128,10 @@ const Home = () => {
     <input type="search" name="search" id="search-bar" onChange={(event) => getSearch(event.target.value)} />
     <button >Search</button>
 
-    <p>
-      {resultTab}
-    </p>
+    <ul id="list-cities" >
+      {cities.map((city, index) => <a href={`/${city}`}><li className="li-city" key={city + index} >{city}</li></a>)}
+    </ul>
   </div>
-  
-
-
-
   
   )
   )  

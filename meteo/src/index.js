@@ -16,6 +16,9 @@ ReactDOM.render(
         <Route exact path="/">
           <Home />
         </Route>
+        <Route exact path="/:city">
+          <Home />
+        </Route>
         <Route>
          <Error />
         </Route>

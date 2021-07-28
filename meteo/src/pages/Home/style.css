@@ -2,7 +2,6 @@
     background-color: #1E213A;
     height: 100vh;
 }
-
 .Header {
     display: flex;
     justify-content: space-between;
@@ -10,4 +9,13 @@
 .Future_weather_container{
     background-color: #100E1D;
     height: 100vh;
+}
+#search-bar{
+    color: #100E1D;
+}
+#list-cities{
+    color: #100E1D;
+}
+.li-city{
+    color: #100E1D;
 }
