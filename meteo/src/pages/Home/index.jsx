@@ -72,11 +72,11 @@ const Home = () => {
    const forecast = weatherForecast.slice(1);
 
    const tabCity = [
-     "Paris", "Dieppe", "Lille", "Nancy", "Brest", "Dagny-Lambercy", "Dagonville", "Dahlenheim", 
-     "Daignac", "Daigny", "Daillancourt", "Daillecourt", "Dainville", "Dainville-Bertheléville", 
-     "Daix", "Dalem", "Dalhain", "Dalhunden", "Dallon", "Dalou", "Dalstein", "Daluis", "Damas-aux-Bois", 
-     "Damas-et-Bettegney", "Damazan", "Dambach", "Dambach-la-Ville", "Dambelin", "Dambenois", "Dambenoît-lès-Colombe", 
-     "Damblain", "Damblainville", "Dambron", "Dame-Marie", "Dame-Marie-les-Bois", "Damelevières", "Daméraucourt", "Damerey", "Damery"
+     "Paris", "Marseille", "Lille", "Nancy", "Brest", "Lyon", "Toulouse", "Nice", 
+     "Nantes", "Montpellier", "Strasbourg", "Bordeaux", "Reims", "Rennes", 
+     "Toulon", "Saint-Étienne", "Poitiers", "Le Havre", "Grenoble", "Dijon", "Angers", "Villeurbanne", "Saint-Denis", 
+     "Nîmes", "Clermont-Ferrand", "Le Mans", "Aix-en-Provence", "Brest", "Tours", "Amiens", 
+     "Limoges", "Annecy", "Perpignan", "Besançon", "Metz", "Orléans", "Rouen"
    ]
 
   function getSearch(value){
@@ -126,7 +126,7 @@ const Home = () => {
   
   <div className= "Search_container">
     <input type="search" name="search" id="search-bar" onChange={(event) => getSearch(event.target.value)} />
-    <button >Search</button>
+    <button id="search-button">Search</button>
 
     <ul id="list-cities" >
       {cities.map((city, index) => <a href={`/${city}`}><li className="li-city" key={city + index} >{city}</li></a>)}

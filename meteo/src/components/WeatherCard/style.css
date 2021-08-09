@@ -1,7 +1,15 @@
 .max-temp{
-    color: #5F6075;
+    color: #c9c7bd;;
 }
 
 .card{
-    background-color: #1E213A;
+    text-align: center;
+    width: 60%;
+    padding: .2rem;
+    margin: 0 0 1rem  ;
+    background-color: #001C30;
+}
+
+.card p {
+    color: #F5F3EB;
 }

@@ -19,12 +19,7 @@ function Weather({country, city, region, localTime, temperature, condition}) {
    
     let idCondition;
 
-    switch(tabCondition[0]){
-        case "Ensoleillé":
-            idCondition = "sunny";
-            break;
-    }
-
+    
     return (
         <div className= "Weather_container">
             <p id="time" >{hours}</p>
@@ -32,7 +27,7 @@ function Weather({country, city, region, localTime, temperature, condition}) {
             <p>{tabCondition[0]}</p>
             <p>{`${temperature} °C`}</p>
             <div id={idCondition}>
-            <img src={tabCondition[1]} alt={tabCondition[0]}/>
+           
             </div>
             <p id="city" >{city}</p>
             <p id="region" >{region}</p>
