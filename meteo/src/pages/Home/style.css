@@ -1,3 +1,8 @@
+.Weather {
+     display: flex;
+     flex-direction: column;
+}
+   
 
 .Actual_weather_container {
     background: url('https://images.wallpapersden.com/image/download/spiritfarer-game_a2ppamaUmZqaraWkpJRmZ2lnrWdrbW0.jpg') center center;
@@ -8,6 +13,8 @@
     display: flex;
     justify-content: space-between;
 }
+
+
 .Future_weather_container{   
     display: flex;
     flex-wrap: wrap;
@@ -16,16 +23,20 @@
     align-items: center;
  
     background-color: #F5F3EB;
-    height: 100vh;
+    
 }
+
 #search-bar{
     color: #100E1D;
 }
+
 #list-cities{
     color: #100E1D;
 }
+
 .li-city{
-    color: #100E1D;
+    color: #144A69;
+    font-size: .8rem;
 }
 
 .Search_container {
@@ -54,9 +65,17 @@
     margin: 1rem 0 0 1rem;
 }
 
-.Humidity, .Wind {
+.Wind {
     text-align: center;
 }
+
+.Humidity {
+    text-align: center;
+    margin: 0 0 1rem;
+}
+
+
+
 
  /* For Chrome or Safari */
  progress::-webkit-progress-bar {
@@ -71,10 +90,89 @@ progress::-webkit-progress-value {
 /* For Firefox */
 progress {
     background-color: #CCC6B8;
+ 
 }
 
 progress::-moz-progress-bar {
     background-color: #001C30 !important;
 }
 
+.City_search {
+font-size: 1rem;
+margin: 1rem;
 
+}
+
+.Search_container {
+   
+padding: 1rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+padding: .5rem .5rem .5rem;
+margin: .5rem;
+background: #CCC6B8;
+border: .5px solid #144A69;
+
+}
+
+a {
+    text-decoration: none;
+    color: #144A69;
+}
+
+
+@media all and (min-width: 760px) {
+
+    .Weather {
+        display: flex;
+        flex-direction: row;   
+   }
+
+   .Actual_weather_container {
+    width: 40%;
+    font-size: 1.5rem;
+    
+}
+
+   .Future_weather_container{   
+    display: flex;
+    justify-content: space-around;
+  width: 70%;
+    
+}
+
+.Wind, .Humidity {
+    font-size: 1.5rem;
+}
+
+#Today {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+#search-bar{
+    width: 80%;
+    font-size: 1.2rem;
+}
+
+.li-city{
+    width: 78%;
+    margin-left: 1rem;
+    font-size: 1.2rem;
+}
+
+.City_search {
+    font-size: 1.5rem;
+    
+    }
+
+    #search-button {
+        font-size: 1.2rem;
+    }
+}

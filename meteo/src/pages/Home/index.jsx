@@ -92,7 +92,7 @@ const Home = () => {
 
     ((homePage === "noSearch") ? 
     
-    <React.Fragment>
+    <div className= "Weather">
       <div className= "Actual_weather_container">
         <div className= "Header">
           <Search> 
@@ -107,8 +107,11 @@ const Home = () => {
           />
       </div>
       <div className= "Future_weather_container">
-        {forecast.map((card, index) => <WeatherCard key={card.date + index} data={card} name={index} />)}
-        <h1>Aujourd'hui</h1>
+        
+          {forecast.map((card, index) => <WeatherCard key={card.date + index} data={card} name={index} />)}
+     
+        <div >
+          <h1 id= "Today">Aujourd'hui</h1>
         <div className= "Wind">
         <p>Force du vent</p>
         <p>{`${cityWeather.gust_kph}  Km/H`}</p>
@@ -118,13 +121,16 @@ const Home = () => {
         <p>{`${cityWeather.humidity} %`}</p>
         <progress id="file" max="100" value={cityWeather.humidity}> </progress>
         </div>
+        
+        </div>
 
       </div>
-  </React.Fragment> 
+  </div> 
   
   :
   
   <div className= "Search_container">
+    <h1 className= "City_search">Rechercher une ville</h1>
     <input type="search" name="search" id="search-bar" onChange={(event) => getSearch(event.target.value)} />
     <button id="search-button">Search</button>
 

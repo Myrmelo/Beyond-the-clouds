@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100vw;
 }
 
 code {
@@ -14,4 +15,5 @@ code {
 
 html {
   background: #F5F3EB;
+  width: 100vw;
 }

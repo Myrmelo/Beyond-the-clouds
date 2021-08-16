@@ -18,3 +18,9 @@
 .Weather_container {
     text-align: center;
 }
+
+@media all and (min-width: 760px) {
+    #time{
+        font-size: 3.5rem;
+    }
+}

@@ -4,9 +4,9 @@
 
 .card{
     text-align: center;
-    width: 60%;
+    width: 15rem;
     padding: .2rem;
-    margin: 0 0 1rem  ;
+    margin: 1rem 0 0  ;
     background-color: #001C30;
 }
 

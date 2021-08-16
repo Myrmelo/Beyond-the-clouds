@@ -19,12 +19,13 @@ function Weather({country, city, region, localTime, temperature, condition}) {
    
     let idCondition;
 
-    
+    console.log(condition)
     return (
         <div className= "Weather_container">
             <p id="time" >{hours}</p>
             <p id="date" >{date}</p>
             <p>{tabCondition[0]}</p>
+            <img src={tabCondition[1]} alt="icon"/>
             <p>{`${temperature} °C`}</p>
             <div id={idCondition}>
            
