@@ -7,13 +7,6 @@
     font-size: 2rem;
 }
 
-#sunny{
-    height: 15rem;
-    background-image: url("../../images/Clear.png");
-    background-position-x: 10rem;
-    background-position-y: center;
-    background-size: 100%;
-}
 
 .Weather_container {
     text-align: center;
